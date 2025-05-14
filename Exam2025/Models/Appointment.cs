@@ -13,7 +13,8 @@ namespace Exam2025.Models
         [Key]
         public int AppointmentId { get; set; }
         public DateTime AppointmentDate { get; set; }
-        
+        public DateTime AppointmentTime { get; set; }
+
         public string AppointmentNotes { get; set; }
 
         public int PatientId { get; set; }

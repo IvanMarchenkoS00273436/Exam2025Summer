@@ -20,6 +20,7 @@ namespace Exam2025.Views
     {
         private PatientData _context;
         private Patient _patient;
+
         public AddAppointment(PatientData context, Patient patient)
         {
             InitializeComponent();
@@ -28,6 +29,9 @@ namespace Exam2025.Views
             _patient = patient;
         }
 
-
+        private void addAppointmentBtn_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

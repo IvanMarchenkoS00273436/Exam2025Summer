@@ -74,6 +74,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Migrations\202505140902209_InitialCreate.cs" />
+    <Compile Include="Migrations\202505140902209_InitialCreate.Designer.cs">
+      <DependentUpon>202505140902209_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202505140952350_NewFieldAppointment.cs" />
+    <Compile Include="Migrations\202505140952350_NewFieldAppointment.Designer.cs">
+      <DependentUpon>202505140952350_NewFieldAppointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Views\AddAppointment.xaml.cs">
       <DependentUpon>AddAppointment.xaml</DependentUpon>
     </Compile>
@@ -111,6 +120,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\202505140902209_InitialCreate.resx">
+      <DependentUpon>202505140902209_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202505140952350_NewFieldAppointment.resx">
+      <DependentUpon>202505140952350_NewFieldAppointment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

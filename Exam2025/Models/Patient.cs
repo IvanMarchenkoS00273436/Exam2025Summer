@@ -13,8 +13,13 @@ namespace Exam2025.Models
         public int PatientId { get; set; }
 
         public string FirstName { get; set; }
-		public string SurnameName { get; set; }
+		public string Surname { get; set; }
         public DateTime DOB { get; set; }
         public string ContactNumber { get; set; }
-	}
+
+        public override string ToString()
+        {
+            return $"{Surname}, {FirstName} - {ContactNumber}";
+        }
+    }
 }

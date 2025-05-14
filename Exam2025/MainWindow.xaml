@@ -3,11 +3,132 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Exam2025"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Patient Management System" Height="550" Width="1150">
+    <Grid Margin="15">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Label 
+            Grid.Row="0"
+            Grid.Column="0"
+            Content="Patients"
+            FontSize="24"
+            FontWeight="Medium"
+            Margin="10,5,10,10"
+            HorizontalAlignment="Center"/>
+
+        <Label 
+            Grid.Row="0"
+            Grid.Column="2"
+            Content="Patient Details"
+            FontSize="24"
+            FontWeight="Medium"
+            Margin="10,5,10,10"
+            HorizontalAlignment="Center"/>
+
+        <ListBox 
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            x:Name="PatientsListBox"
+            FontSize="16"
+            Margin="5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"/>
+
+        <TextBox 
+            x:Name="PatientsFirstName"
+            Grid.Row="1"
+            Grid.Column="2"
+            Margin="10,5"
+            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+            materialDesign:HintAssist.Hint="First first name"/>
+
+        <TextBox 
+            x:Name="PatientsSurname"
+            Grid.Row="1"
+            Grid.Column="3"
+            Margin="10,5"
+            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+            materialDesign:HintAssist.Hint="Enter surname"/>
+
+        <TextBox 
+            x:Name="PatientsPhoneNumber"
+            Grid.Row="2"
+            Grid.Column="2"
+            Margin="10,5"
+            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+            materialDesign:HintAssist.Hint="Enter phone number"/>
+
+        <DatePicker 
+            x:Name="PatientsDateOfBirth"
+            Grid.Row="2"
+            Grid.Column="3"
+            Margin="10,5"
+            Style="{StaticResource MaterialDesignOutlinedDatePicker}"
+            materialDesign:HintAssist.Hint="DOB"/>
+
+        <Button 
+            x:Name="AddPatientBtn"
+            Grid.Column="4"
+            Grid.Row="1"
+            Content="Add"
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            Margin="10,5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Click="AddPatientBtn_Click"/>
+
+        <Label
+            Content="Appointments"
+            FontSize="24"
+            FontWeight="Medium"
+            Grid.Row="3"
+            Grid.Column="2"
+            Margin="10,20,10,10"
+            HorizontalAlignment="Center"/>
+
+        <ListBox 
+            x:Name="AppointmentsListBox"
+            FontSize="16"
+            Margin="5"
+            Grid.Row="4"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"/>
+
+        <StackPanel 
+            Grid.Column="4"
+            Grid.Row="4"
+            Margin="10,5"
+            VerticalAlignment="Top">
+
+            <Button 
+                x:Name="AddAppointmentBtn"
+                Content="Add"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Margin="0,0,0,10"/>
+
+            <Button 
+                x:Name="EditAppointmentBtn"
+                Content="Edit"
+                Style="{StaticResource MaterialDesignRaisedButton}"/>
+        </StackPanel>
     </Grid>
 </Window>

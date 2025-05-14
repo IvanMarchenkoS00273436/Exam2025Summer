@@ -31,7 +31,7 @@ namespace Exam2025
             InitializeComponent();
 
             // Initialize the database
-            //InitializeDatabase();
+            // InitializeDatabase();
 
             LoadData();
         }
@@ -74,15 +74,15 @@ namespace Exam2025
                 context.SaveChanges();
             }
         }
-    
+
         public void LoadData()
         {
             var queryPatients = from p in _context.Patients
-                        select p;
+                                select p;
             _patients = queryPatients.ToList();
             PatientsListBox.ItemsSource = _patients;
 
-            if(_selectedPatient != null)
+            if (_selectedPatient != null)
             {
                 var queryAppointments = from a in _context.Appointments
                                         where a.PatientId == _selectedPatient.PatientId
@@ -90,8 +90,23 @@ namespace Exam2025
                 _appointments = queryAppointments.ToList();
                 countAppointments = _appointments.Count;
                 AppointmentsListBox.ItemsSource = _appointments;
+
+                // No appointments message if no appointments
+                if (_appointments.Count == 0)
+                {
+                    NoAppointmentsMessage.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    NoAppointmentsMessage.Visibility = Visibility.Collapsed;
+                }
             }
-            
+            else
+            {
+                _appointments = new List<Appointment>();
+                AppointmentsListBox.ItemsSource = _appointments;
+                NoAppointmentsMessage.Visibility = Visibility.Visible;
+            }
         }
 
         private void AddPatientBtn_Click(object sender, RoutedEventArgs e)

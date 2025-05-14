@@ -148,8 +148,16 @@ namespace Exam2025
         {
             var selectedAppointment = AppointmentsListBox.SelectedItem as Appointment;
             if (selectedAppointment != null) 
-            { 
-
+            {
+                // Open the EditAppointment window
+                EditAppointment editAppointmentWindow = new EditAppointment(_context, selectedAppointment);
+                editAppointmentWindow.ShowDialog();
+                editAppointmentWindow.Owner = this;
+                LoadData();
+            }
+            else
+            {
+                MessageBox.Show("Please select an appointment to edit.");
             }
         }
     }

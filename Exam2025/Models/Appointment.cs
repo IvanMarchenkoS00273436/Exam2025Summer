@@ -20,5 +20,10 @@ namespace Exam2025.Models
         public int PatientId { get; set; }
         [ForeignKey("PatientId")]
         public Patient Patient { get; set; }
+
+        public override string ToString()
+        {
+            return $"{AppointmentDate.ToShortDateString()} {AppointmentTime.ToShortTimeString()} - {AppointmentNotes}";
+        }
     }
 }

@@ -86,6 +86,9 @@
     <Compile Include="Views\AddAppointment.xaml.cs">
       <DependentUpon>AddAppointment.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\EditAppointment.xaml.cs">
+      <DependentUpon>EditAppointment.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -100,6 +103,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\AddAppointment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditAppointment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

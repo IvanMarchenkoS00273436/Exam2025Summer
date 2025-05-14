@@ -41,7 +41,9 @@
             FontWeight="Medium"
             Margin="10,5,10,10"
             HorizontalAlignment="Center"/>
-
+        
+        
+        
         <ListBox 
             Grid.Row="1"
             Grid.RowSpan="2"
@@ -51,7 +53,8 @@
             FontSize="16"
             Margin="5"
             HorizontalAlignment="Stretch"
-            VerticalAlignment="Stretch"/>
+            VerticalAlignment="Stretch"
+            SelectionChanged="PatientsListBox_SelectionChanged"/>
 
         <TextBox 
             x:Name="PatientsFirstName"
@@ -123,12 +126,12 @@
                 x:Name="AddAppointmentBtn"
                 Content="Add"
                 Style="{StaticResource MaterialDesignRaisedButton}"
-                Margin="0,0,0,10"/>
+                Margin="0,0,0,10" Click="AddAppointmentBtn_Click"/>
 
             <Button 
                 x:Name="EditAppointmentBtn"
                 Content="Edit"
-                Style="{StaticResource MaterialDesignRaisedButton}"/>
+                Style="{StaticResource MaterialDesignRaisedButton}" Click="EditAppointmentBtn_Click"/>
         </StackPanel>
     </Grid>
 </Window>

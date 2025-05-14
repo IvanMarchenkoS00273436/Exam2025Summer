@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Exam2025.DatabaseSets;
 using Exam2025.Models;
+using Exam2025.Views;
 
 namespace Exam2025
 {
@@ -22,6 +23,8 @@ namespace Exam2025
         private PatientData _context = new PatientData();
         private List<Patient> _patients;
         private List<Appointment> _appointments;
+        private Patient _selectedPatient;
+        private int countAppointments = 0;
 
         public MainWindow()
         {
@@ -74,11 +77,21 @@ namespace Exam2025
     
         public void LoadData()
         {
-            var query = from p in _context.Patients
+            var queryPatients = from p in _context.Patients
                         select p;
-            _patients = query.ToList();
-
+            _patients = queryPatients.ToList();
             PatientsListBox.ItemsSource = _patients;
+
+            if(_selectedPatient != null)
+            {
+                var queryAppointments = from a in _context.Appointments
+                                        where a.PatientId == _selectedPatient.PatientId
+                                        select a;
+                _appointments = queryAppointments.ToList();
+                countAppointments = _appointments.Count;
+                AppointmentsListBox.ItemsSource = _appointments;
+            }
+            
         }
 
         private void AddPatientBtn_Click(object sender, RoutedEventArgs e)
@@ -104,6 +117,40 @@ namespace Exam2025
 
             // Update listbox
             LoadData();
+        }
+
+        private void AddAppointmentBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedPatient = PatientsListBox.SelectedItem as Patient;
+            if (selectedPatient != null)
+            {
+                // Open the AddAppointment window
+                AddAppointment addAppointmentWindow = new AddAppointment(_context, selectedPatient);
+                addAppointmentWindow.ShowDialog();
+                addAppointmentWindow.Owner = this;
+
+                // Refresh the appointments list
+                LoadData();
+            }
+            else
+            {
+                MessageBox.Show("Please select a patient to add an appointment.");
+            }
+        }
+
+        private void PatientsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _selectedPatient = PatientsListBox.SelectedItem as Patient;
+            LoadData();
+        }
+
+        private void EditAppointmentBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedAppointment = AppointmentsListBox.SelectedItem as Appointment;
+            if (selectedAppointment != null) 
+            { 
+
+            }
         }
     }
 }

@@ -31,7 +31,27 @@ namespace Exam2025.Views
 
         private void addAppointmentBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+            // Get the values from the input fields
+            DateTime appDate = appointmentDatePicker.SelectedDate.Value;
+            DateTime appTime = appointmentTimePicker.SelectedTime.Value;
+            string appNotes = appointmentNotesTextBox.Text;
+
+            // Create a new appointment object
+            Appointment appointment = new Appointment()
+            {
+                AppointmentDate = appDate,
+                AppointmentTime = appTime,
+                AppointmentNotes = appNotes,
+                PatientId = _patient.PatientId
+            };
+
+            // Add the appointment to the database
+            _context.Appointments.Add(appointment);
+            _context.SaveChanges();
+            MessageBox.Show("Appointment added successfully!");
+
+            // Close the window
+            this.Close();
         }
     }
 }
